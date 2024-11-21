@@ -17,9 +17,36 @@ package Flaviaf.algoritmosEstructuradeDatos.arrayStringHashTable.ZeroMatric;
  */
 public class ZeroMatrix {
 
-    public void zeroMatrix(int[][] matrix) {
+    public int[][] zeroMatrix(int[][] matrix) {
       int rows = matrix.length;
       int columns = matrix[0].length;
 
+        boolean[] rowsToZero = new boolean[rows];
+        boolean[] colsToZero = new boolean[columns];
+
+      for (int i=0; i<rows; i++){
+          for ( int j=0; j<columns;j++){
+              if (matrix[i][j] == 0) {
+                  rowsToZero[i]= true;
+                  colsToZero[j]= true;
+              }
+          }
+      }
+
+      int [][] result = new int [rows][columns];
+      for( int i =0; i<rows; i++){
+          for ( int j =0; j< columns; j++){
+              if(rowsToZero[i]|| colsToZero[j]){
+                  result[i][j] = 0;
+              }else {
+                  result[i][j]= matrix[i][j];
+
+              }
+          }
+      }
+        return result;
+
+
     }
+
 }
